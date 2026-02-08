@@ -56,6 +56,14 @@
                 transform: translateX(-50%);
             }
         }
+        /* Style simple pour le tableau */
+        .table-header {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
+            height: 120px;
+            padding: 10px;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-primary selection:text-white">
@@ -182,7 +190,7 @@
                 <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <div class="max-w-3xl mx-auto space-y-8">
+            <div class="max-w-3xl mx-auto space-y-8 mb-16">
                 <!-- BTS -->
                 <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-primary hover:shadow-md transition">
                     <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
@@ -203,6 +211,104 @@
                     <p class="text-slate-600 mt-2">Mention Bien.</p>
                 </div>
             </div>
+
+            <!-- TABLEAU DE SYNTHESE -->
+            <div class="mt-12 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="p-6 border-b border-slate-100">
+                    <h3 class="text-xl font-bold text-slate-900">Tableau de Synthèse (Épreuve E4)</h3>
+                    <p class="text-slate-500 text-sm">Récapitulatif des compétences mises en œuvre durant les projets et stages.</p>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-slate-600">
+                        <thead class="bg-slate-50 text-slate-800 font-semibold text-xs uppercase tracking-wider">
+                            <tr>
+                                <th class="p-4 min-w-[300px]">Réalisations Professionnelles</th>
+                                <th class="p-4 min-w-[150px]">Période</th>
+                                <th class="p-4 text-center min-w-[80px]" title="Gérer le patrimoine informatique">Patrimoine</th>
+                                <th class="p-4 text-center min-w-[80px]" title="Répondre aux incidents">Incidents</th>
+                                <th class="p-4 text-center min-w-[80px]" title="Travailler en mode projet">Projet</th>
+                                <th class="p-4 text-center min-w-[80px]" title="Mettre à disposition un service">Service</th>
+                                <th class="p-4 text-center min-w-[80px]" title="Organiser son développement pro">Dev Pro</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-4 font-medium text-slate-900">Mise en place d'un contrôleur de domaine (AD, DHCP, DNS)</td>
+                                <td class="p-4">Nov. 2025</td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-4 font-medium text-slate-900">Mise en place routeur virtuel + pare-feu PFSENSE</td>
+                                <td class="p-4">Oct. 2025</td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-4 font-medium text-slate-900">TP : Configuration de commutateurs et routeur (HSRP)</td>
+                                <td class="p-4">Sept/Oct 2025</td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-4 font-medium text-slate-900">TP : Sécurité et fonctionnalité d’un réseau communal</td>
+                                <td class="p-4">Oct. 2025</td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors bg-blue-50/50">
+                                <td class="p-4 font-medium text-slate-900">Support informatique (GLPI) - Stage</td>
+                                <td class="p-4">Mai-Juil 2025</td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors bg-blue-50/50">
+                                <td class="p-4 font-medium text-slate-900">Participation décisions & réunions - Stage</td>
+                                <td class="p-4">Mai-Juil 2025</td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors bg-blue-50/50">
+                                <td class="p-4 font-medium text-slate-900">Config. poste de travail & maintenance - Stage</td>
+                                <td class="p-4">Mai-Juil 2025</td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-4 font-medium text-slate-900">Projet d’infrastructure réseau virtualisée GNS3</td>
+                                <td class="p-4">Mai-Juil 2026</td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"></td>
+                                <td class="p-4 text-center"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -273,7 +379,7 @@
                 <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <!-- Changement ici : Grille 2x2 pour inclure la gestion de projet sans réduire la taille -->
+            <!-- Grille 2x2 -->
             <div class="grid md:grid-cols-2 gap-8">
                 
                 <!-- Systèmes & Virtualisation -->
@@ -309,7 +415,7 @@
                     </ul>
                 </div>
 
-                <!-- Cybersécurité -->
+                <!-- Cybersécurité (MODIFIÉ) -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-red-500">
                     <div class="flex items-center mb-6">
                         <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center text-red-600 mr-4">
@@ -319,13 +425,13 @@
                     </div>
                     <ul class="space-y-3 text-slate-600">
                         <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Offensive :</strong> Pentesting (Evil Twin), Audit Wi-Fi (Airgeddon).</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Défensive :</strong> Détection d’incidents & logs (Wazuh, Graylog).</span></li>
+                        <!-- SUPPRESSION DE WAZUH/GRAYLOG -->
                         <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Contrôle :</strong> Gestion des accès, MFA, politiques de mots de passe.</span></li>
                         <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Gouvernance :</strong> PRA, sensibilisation utilisateurs & veille vulnérabilités.</span></li>
                     </ul>
                 </div>
 
-                <!-- Gestion de Projet -->
+                <!-- Gestion de Projet (MODIFIÉ) -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-emerald-500">
                     <div class="flex items-center mb-6">
                         <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 mr-4">
@@ -335,9 +441,11 @@
                     </div>
                     <ul class="space-y-3 text-slate-600">
                         <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Pilotage :</strong> Planification, suivi des tâches et reporting.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Méthodes :</strong> Méthodologies agiles (Scrum, Kanban) & outils (Teams, Trello).</span></li>
+                        <!-- SUPPRESSION TRELLO -->
+                        <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Méthodes :</strong> Méthodologies agiles (Scrum, Kanban) & outils (Teams).</span></li>
                         <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Livrables :</strong> Rédaction de doc technique et supports de formation.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Soft Skills :</strong> Communication transversale et animation d’ateliers.</span></li>
+                        <!-- REMPLACEMENT SOFT SKILLS -->
+                        <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Soft Skills :</strong> Rigueur, Curiosité, Esprit d'équipe et Autonomie.</span></li>
                     </ul>
                 </div>
 
@@ -418,26 +526,112 @@
         </div>
     </section>
 
-    <!-- VEILLE -->
+    <!-- VEILLE (MODIFIÉ) -->
     <section id="veille" class="py-20 bg-slate-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-slate-900">Veille Technologique</h2>
-                <p class="mt-2 text-slate-600">Sujets que je suis activement</p>
+                <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-slate-600">
+                    Sujet : <strong>Microsoft Cloud (2025-2026)</strong> — Entre hyper-croissance de l'IA et défis de souveraineté.
+                </p>
             </div>
             
-            <div class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-primary">
-                <div class="flex items-center mb-4">
-                    <i class="fab fa-microsoft text-3xl text-primary mr-3"></i>
-                    <h3 class="text-2xl font-bold text-slate-800">Le Cloud Microsoft & Hybridation</h3>
+            <div class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-primary mb-10">
+                <div class="flex items-center mb-6">
+                    <div class="p-3 bg-blue-100 rounded-lg text-primary mr-4">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800">Synthèse (Sept 2025 - Fév 2026)</h3>
                 </div>
-                <p class="text-slate-600 mb-6">
-                    Je m'intéresse particulièrement aux solutions cloud Microsoft (Azure, Microsoft 365) et à l'hybridation des infrastructures (Azure AD, Intune, Windows Server Hybrid).
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <span class="px-4 py-2 bg-slate-50 rounded-lg text-sm text-slate-700 font-medium shadow-sm"> <i class="fas fa-rss text-orange-400 mr-2"></i> TechCommunity</span>
-                    <span class="px-4 py-2 bg-slate-50 rounded-lg text-sm text-slate-700 font-medium shadow-sm"> <i class="fab fa-microsoft text-blue-400 mr-2"></i> MS Learn</span>
+                <div class="text-slate-600 space-y-4 leading-relaxed text-justify">
+                    <p>
+                        L'écosystème Microsoft Cloud (Azure, Microsoft 365) a opéré un virage stratégique majeur, passant de l'adoption à l'industrialisation de l'IA générative. Trois tendances redéfinissent son impact :
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>
+                            <strong>L'avènement des Agents IA :</strong> Avec l'arrivée de modèles comme DeepSeek R1 et Sora 2 dans Azure AI Foundry, l'automatisation dépasse les simples tâches pour gérer des processus métiers complets.
+                        </li>
+                        <li>
+                            <strong>La Sécurité comme impératif absolu :</strong> Suite à des failles critiques (Azure Tenant, VPN), Microsoft a durci ses politiques (MFA généralisé, directive NIS2), obligeant les entreprises à revoir leurs architectures d'identité Entra ID.
+                        </li>
+                        <li>
+                            <strong>Coûts et Souveraineté :</strong> L'augmentation des tarifs (puces Azure Maia) et la refonte des licences poussent les DSI vers une approche FinOps rigoureuse, confirmant le cloud comme système nerveux central mais coûteux de l'entreprise.
+                        </li>
+                    </ul>
                 </div>
+            </div>
+
+            <!-- Articles sélectionnés -->
+            <h3 class="text-xl font-bold text-slate-900 mb-6 px-2 border-l-4 border-slate-300 pl-4">Sélection d'Articles Clés</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                
+                <!-- Article 1 -->
+                <a href="#" class="block bg-white p-6 rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition group">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-red-600 bg-red-50 px-2 py-1 rounded">Sécurité Critique</span>
+                        <span class="text-xs text-slate-400">17/10/2025</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-800 group-hover:text-primary mb-2">La faille "Azure Tenant Breach" expose des milliers de comptes</h4>
+                    <p class="text-sm text-slate-500 mb-3">Une vulnérabilité majeure inter-tenants force une réponse d'urgence de Microsoft.</p>
+                    <span class="text-xs font-medium text-slate-400"><i class="fas fa-newspaper mr-1"></i> The Hacker News</span>
+                </a>
+
+                <!-- Article 2 -->
+                <a href="#" class="block bg-white p-6 rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition group">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Hardware / IA</span>
+                        <span class="text-xs text-slate-400">10/11/2025</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-800 group-hover:text-primary mb-2">Ignite 2025 : Microsoft dévoile les puces Azure Cobalt 100</h4>
+                    <p class="text-sm text-slate-500 mb-3">Nouvelle architecture hardware dédiée à l'accélération des charges de travail IA.</p>
+                    <span class="text-xs font-medium text-slate-400"><i class="fas fa-newspaper mr-1"></i> Silicon.fr</span>
+                </a>
+
+                <!-- Article 3 -->
+                <a href="#" class="block bg-white p-6 rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition group">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded">Conformité</span>
+                        <span class="text-xs text-slate-400">22/11/2025</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-800 group-hover:text-primary mb-2">Impact de la directive NIS2 sur les clients Azure français</h4>
+                    <p class="text-sm text-slate-500 mb-3">Analyse des nouvelles obligations de cybersécurité pour les infrastructures cloud.</p>
+                    <span class="text-xs font-medium text-slate-400"><i class="fas fa-newspaper mr-1"></i> ANSSI / Presse Citron</span>
+                </a>
+
+                <!-- Article 4 -->
+                <a href="#" class="block bg-white p-6 rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition group">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">Sécurité Réseau</span>
+                        <span class="text-xs text-slate-400">08/01/2026</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-800 group-hover:text-primary mb-2">Failles Zero-Day VPN Ivanti impactant les accès Azure</h4>
+                    <p class="text-sm text-slate-500 mb-3">Les vulnérabilités des passerelles VPN compromettent les accès aux environnements cloud.</p>
+                    <span class="text-xs font-medium text-slate-400"><i class="fas fa-newspaper mr-1"></i> HornetSecurity</span>
+                </a>
+
+                <!-- Article 5 -->
+                <a href="#" class="block bg-white p-6 rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition group">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">Stratégie</span>
+                        <span class="text-xs text-slate-400">29/01/2026</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-800 group-hover:text-primary mb-2">Satya Nadella mise tout sur les "Agents Autonomes"</h4>
+                    <p class="text-sm text-slate-500 mb-3">Analyse des résultats Q2 2026 et de la nouvelle orientation stratégique vers l'IA autonome.</p>
+                    <span class="text-xs font-medium text-slate-400"><i class="fas fa-newspaper mr-1"></i> CNBC</span>
+                </a>
+
+                <!-- Article 6 -->
+                <a href="#" class="block bg-white p-6 rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition group">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">IA Open Source</span>
+                        <span class="text-xs text-slate-400">01/02/2026</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-800 group-hover:text-primary mb-2">DeepSeek R1 disponible sur Azure AI Foundry</h4>
+                    <p class="text-sm text-slate-500 mb-3">Intégration du modèle open-source performant dans l'écosystème Azure pour les développeurs.</p>
+                    <span class="text-xs font-medium text-slate-400"><i class="fas fa-newspaper mr-1"></i> Blog Azure</span>
+                </a>
+
             </div>
         </div>
     </section>
