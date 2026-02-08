@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Thomas Borras-Dupuy</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563eb', // Bleu royal
+                        dark: '#0f172a',    // Fond sombre
+                        light: '#f8fafc',   // Fond clair
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 24px;
+            width: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+        @media (min-width: 768px) {
+            .timeline-line::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-primary selection:text-white">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-primary tracking-tighter">
+                        Thomas<span class="text-slate-800">.BD</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-6 items-center">
+                    <a href="#accueil" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Accueil</a>
+                    <a href="#apropos" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">À propos</a>
+                    <a href="#formation" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Formation</a>
+                    <a href="#experience" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Expérience</a>
+                    <a href="#competences" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Compétences</a>
+                    <a href="#projets" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Projets</a>
+                    <a href="#contact" class="bg-primary text-white px-5 py-2 rounded-full font-medium hover:bg-blue-700 transition shadow-md shadow-blue-200 text-sm">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#accueil" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Accueil</a>
+                <a href="#apropos" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">À propos</a>
+                <a href="#formation" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Formation</a>
+                <a href="#experience" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Expérience</a>
+                <a href="#competences" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Compétences</a>
+                <a href="#projets" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Projets</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-primary font-bold">Me contacter</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="accueil" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-primary text-sm font-semibold mb-6">
+                Recherche d'alternance
+            </span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 tracking-tight leading-tight">
+                Thomas <span class="text-primary relative">Borras-Dupuy</span>
+            </h1>
+            <p class="mt-4 text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Étudiant en BTS SIO option SISR. Passionné par l'administration système, la virtualisation et la cybersécurité.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#projets" class="px-8 py-3.5 rounded-full bg-primary text-white font-semibold shadow-lg shadow-blue-500/30 hover:bg-blue-700 hover:-translate-y-1 transition duration-300">
+                    Mes réalisations
+                </a>
+                <!-- LIEN DU CV -->
+                <a href="CV-TBD.pdf" target="_blank" class="px-8 py-3.5 rounded-full bg-white text-slate-700 border border-slate-200 font-semibold hover:border-primary hover:text-primary transition duration-300">
+                    <i class="fas fa-file-pdf mr-2"></i> Voir mon CV
+                </a>
+            </div>
+        </div>
+        
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30">
+            <div class="absolute top-1/4 left-10 w-64 h-64 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+            <div class="absolute top-1/3 right-10 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="apropos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative order-2 md:order-1">
+                    <!-- Placeholder Photo -->
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl bg-slate-100 relative group max-w-md mx-auto">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent"></div>
+                        <!-- Remplace l'URL ci-dessous par ta photo de CV si tu le souhaites -->
+                        <img src="https://ui-avatars.com/api/?name=Thomas+B&background=0f172a&color=fff&size=500&font-size=0.33" alt="Thomas Borras-Dupuy" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">À propos de moi</h2>
+                    <div class="space-y-4 text-slate-600 text-lg leading-relaxed text-justify">
+                        <p>
+                            Actuellement en deuxième année de <strong>BTS SIO</strong> (Services Informatiques aux Organisations), je suis passionné par l'informatique avec un intérêt particulier pour la <strong>cybersécurité</strong>.
+                        </p>
+                        <p>
+                            Mes études et mes stages m'ont permis de développer des compétences techniques solides en administration système et réseau. Je suis maintenant prêt à les mettre en pratique afin de relever de nouveaux défis, notamment dans le cadre d'une alternance.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8 pt-8 border-t border-slate-100 grid grid-cols-2 gap-6">
+                        <div>
+                            <span class="block text-3xl font-bold text-primary">2</span>
+                            <span class="text-sm text-slate-500">Expériences Pro</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-bold text-primary">3+</span>
+                            <span class="text-sm text-slate-500">Projets Majeurs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMATION -->
+    <section id="formation" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Mon Parcours Scolaire</h2>
+                <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-8">
+                <!-- BTS -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-primary hover:shadow-md transition">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">BTS Services Informatiques aux Organisations</h3>
+                        <span class="text-sm font-semibold text-primary bg-blue-50 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">2024 - 2026</span>
+                    </div>
+                    <p class="text-slate-500 font-medium">Lycée Public Turgot, Paris (75003)</p>
+                    <p class="text-slate-600 mt-2">Option SISR : Solutions d'Infrastructures, Systèmes et Réseaux.</p>
+                </div>
+
+                <!-- BAC PRO -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-slate-300 hover:shadow-md transition">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">Bac Pro Systèmes Numériques</h3>
+                        <span class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">2021 - 2024</span>
+                    </div>
+                    <p class="text-slate-500 font-medium">Lycée Jean Moulin (78150)</p>
+                    <p class="text-slate-600 mt-2">Mention Bien.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPÉRIENCES PROFESSIONNELLES -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Expériences Professionnelles</h2>
+                <p class="text-slate-500 mt-2">Stages et missions en entreprise</p>
+            </div>
+
+            <div class="relative timeline-line max-w-4xl mx-auto">
+                
+                <!-- Micropole -->
+                <div class="relative pl-16 md:pl-0 mb-12">
+                    <!-- Dot -->
+                    <div class="absolute left-6 md:left-1/2 -ml-3 w-6 h-6 bg-primary rounded-full border-4 border-white shadow z-10"></div>
+                    
+                    <div class="md:w-1/2 md:pr-12 md:text-right md:ml-0 ml-0">
+                        <span class="text-sm font-bold text-primary tracking-wider uppercase">Mai-Juillet 2025</span>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">Stage Support IT & Sécurité</h3>
+                        <p class="text-slate-600 font-medium mb-2">Micropole (Levallois-Perret)</p>
+                        <div class="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-100 text-left md:ml-auto">
+                            <ul class="space-y-3 text-slate-600 text-sm">
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <strong>Cybersécurité :</strong> Audit Wi-Fi et simulation d'attaque "Evil Twin" (Kali Linux, Mikrotik).</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <strong>Cloud Azure :</strong> Participation à une migration Tenant-to-Tenant (Quest On Demand).</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <strong>Infrastructure :</strong> Masterisation et déploiement de postes via SCCM.</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <strong>Support N1/N2 :</strong> Gestion de tickets GLPI et déplacements sur sites.</li>
+                            </ul>
+                            <!-- LIEN RAPPORT DE STAGE -->
+                            <div class="mt-4 pt-4 border-t border-slate-200">
+                                <a href="Rapport de stage-Micropole-BTS.pdf" target="_blank" class="text-primary hover:text-blue-800 text-sm font-semibold flex items-center md:justify-end">
+                                    <i class="fas fa-book-open mr-2"></i> Lire le rapport de stage (PDF)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mairie -->
+                <div class="relative pl-16 md:pl-0">
+                    <!-- Dot -->
+                    <div class="absolute left-6 md:left-1/2 -ml-3 w-6 h-6 bg-slate-300 rounded-full border-4 border-white shadow z-10"></div>
+                    
+                    <div class="md:w-1/2 md:ml-auto md:pl-12">
+                        <span class="text-sm font-bold text-slate-400 tracking-wider uppercase">Juin 2023</span>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">Stage Support Informatique</h3>
+                        <p class="text-slate-600 font-medium mb-2">Mairie de Garches</p>
+                        <div class="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-100">
+                            <ul class="space-y-3 text-slate-600 text-sm">
+                                <li class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-2"></i> Mise en place d'une structure hiérarchique utilisateurs/machines.</li>
+                                <li class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-2"></i> Traçabilité et gestion efficace du parc.</li>
+                                <li class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-2"></i> Aide à la configuration des outils de com interne.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section id="competences" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Mes Compétences Techniques</h2>
+                <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Changement ici : Grille 2x2 pour inclure la gestion de projet sans réduire la taille -->
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Systèmes & Virtualisation -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-blue-500">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-primary mr-4">
+                            <i class="fab fa-windows text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Systèmes & Virtualisation</h3>
+                    </div>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-3 min-w-[16px]"></i> <span><strong>OS :</strong> Installation, config & durcissement (Windows Server, Linux).</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-3 min-w-[16px]"></i> <span><strong>Admin :</strong> Gestion des comptes, droits, GPO & stratégies de groupe.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-3 min-w-[16px]"></i> <span><strong>Scripting :</strong> Automatisation de tâches via Bash et PowerShell.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-3 min-w-[16px]"></i> <span><strong>Cloud/Virtu :</strong> Azure, Hyper-V, Proxmox, SCCM.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-3 min-w-[16px]"></i> <span><strong>Monitoring :</strong> Surveillance, diagnostic et documentation proactive.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Réseaux -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-indigo-500">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 mr-4">
+                            <i class="fas fa-network-wired text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Réseaux & Infrastructure</h3>
+                    </div>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Architecture :</strong> Conception LAN/VLAN et adressage IP.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Matériel :</strong> Config Routeurs, Switchs & Pare-feu (Cisco, PfSense).</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Analyse :</strong> Analyse de trafic, Wireshark, sécurité périmétrique.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Connexions :</strong> Création de tunnels VPN site-à-site.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Cybersécurité -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-red-500">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center text-red-600 mr-4">
+                            <i class="fas fa-shield-halved text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Cybersécurité & Veille</h3>
+                    </div>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Offensive :</strong> Pentesting (Evil Twin), Audit Wi-Fi (Airgeddon).</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Défensive :</strong> Détection d’incidents & logs (Wazuh, Graylog).</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Contrôle :</strong> Gestion des accès, MFA, politiques de mots de passe.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Gouvernance :</strong> PRA, sensibilisation utilisateurs & veille vulnérabilités.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Gestion de Projet -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-emerald-500">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 mr-4">
+                            <i class="fas fa-tasks text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Gestion de Projet</h3>
+                    </div>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Pilotage :</strong> Planification, suivi des tâches et reporting.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Méthodes :</strong> Méthodologies agiles (Scrum, Kanban) & outils (Teams, Trello).</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Livrables :</strong> Rédaction de doc technique et supports de formation.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Soft Skills :</strong> Communication transversale et animation d’ateliers.</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projets" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Projets & Réalisations</h2>
+                    <p class="mt-2 text-slate-500">Mise en pratique en entreprise et en formation.</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Projet 1 : Pentest Evil Twin -->
+                <article class="bg-white rounded-xl overflow-hidden border border-slate-100 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                        <i class="fas fa-user-secret text-5xl text-red-500 opacity-90"></i>
+                        <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">Cybersécurité</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Audit Wi-Fi "Evil Twin"</h3>
+                        <p class="text-slate-600 text-sm mb-4 flex-1">
+                            Simulation d'attaque "Jumeau Maléfique" pour auditer la sécurité Wi-Fi. Utilisation d'un routeur Mikrotik et Kali Linux (Airgeddon) pour capturer des handshakes WPA2 via un portail captif frauduleux.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Kali Linux</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Mikrotik</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Social Eng.</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 2 : Migration Azure -->
+                <article class="bg-white rounded-xl overflow-hidden border border-slate-100 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-blue-600 relative overflow-hidden flex items-center justify-center">
+                        <i class="fab fa-microsoft text-5xl text-white opacity-90"></i>
+                        <div class="absolute top-4 right-4 bg-blue-800 text-white text-xs font-bold px-2 py-1 rounded">Cloud</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Migration Azure Tenant-to-Tenant</h3>
+                        <p class="text-slate-600 text-sm mb-4 flex-1">
+                            Fusion opérationnelle des SI. Migration des identités et données (Exchange, OneDrive) via Quest On Demand. Supervision des flux, analyse des logs d'erreurs et support utilisateur post-migration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Azure AD</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Exchange</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Quest</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 3 : SCCM -->
+                <article class="bg-white rounded-xl overflow-hidden border border-slate-100 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-blue-900 relative overflow-hidden flex items-center justify-center">
+                        <i class="fas fa-desktop text-5xl text-white opacity-80"></i>
+                        <div class="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Infra</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Déploiement Automatisé SCCM</h3>
+                        <p class="text-slate-600 text-sm mb-4 flex-1">
+                            Masterisation et déploiement de postes de travail. Scripting PowerShell pour automatiser la création des comptes machines dans l'AD et déploiement via PXE Boot.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">SCCM</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">PowerShell</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">PXE</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- VEILLE -->
+    <section id="veille" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Veille Technologique</h2>
+                <p class="mt-2 text-slate-600">Sujets que je suis activement</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-primary">
+                <div class="flex items-center mb-4">
+                    <i class="fab fa-microsoft text-3xl text-primary mr-3"></i>
+                    <h3 class="text-2xl font-bold text-slate-800">Le Cloud Microsoft & Hybridation</h3>
+                </div>
+                <p class="text-slate-600 mb-6">
+                    Je m'intéresse particulièrement aux solutions cloud Microsoft (Azure, Microsoft 365) et à l'hybridation des infrastructures (Azure AD, Intune, Windows Server Hybrid).
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <span class="px-4 py-2 bg-slate-50 rounded-lg text-sm text-slate-700 font-medium shadow-sm"> <i class="fas fa-rss text-orange-400 mr-2"></i> TechCommunity</span>
+                    <span class="px-4 py-2 bg-slate-50 rounded-lg text-sm text-slate-700 font-medium shadow-sm"> <i class="fab fa-microsoft text-blue-400 mr-2"></i> MS Learn</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Me contacter</h2>
+                    <p class="text-slate-400 text-lg mb-8">
+                        À la recherche d'une alternance ou de nouveaux défis en administration système et réseau ? N'hésitez pas à me contacter.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium">Email</h3>
+                                <a href="mailto:thomas.borrasd@gmail.com" class="text-slate-400 hover:text-white transition">thomas.borrasd@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-primary">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium">Localisation</h3>
+                                <p class="text-slate-400">Garches (92380), France</p>
+                            </div>
+                        </div>
+                        <!-- Téléphone (optionnel selon ton souhait de l'afficher publiquement) -->
+                         <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-primary">
+                                <i class="fas fa-phone text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium">Téléphone</h3>
+                                <p class="text-slate-400">06 28 91 64 40</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 text-slate-800">
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Nom complet</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="Votre nom">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="votre@email.com">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="Votre message..."></textarea>
+                        </div>
+                        <button type="button" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg shadow-blue-500/30">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2024 Thomas Borras-Dupuy. Tous droits réservés.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <!-- Lien GitHub -->
+                <a href="#" class="hover:text-white transition"><i class="fab fa-github text-xl"></i></a>
+                <!-- Lien LinkedIn -->
+                <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Changement de style navbar au scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
