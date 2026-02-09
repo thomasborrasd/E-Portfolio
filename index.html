@@ -13,6 +13,7 @@
     
     <script>
         tailwind.config = {
+            darkMode: 'class', // Activation du mode sombre via une classe
             theme: {
                 extend: {
                     fontFamily: {
@@ -28,11 +29,18 @@
         }
     </script>
     <style>
+        /* Styles pour le mode clair */
         .glass-nav {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
+        /* Styles pour le mode sombre */
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.9); /* Slate-900 avec opacité */
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
         .card-hover {
             transition: all 0.3s ease;
         }
@@ -50,6 +58,9 @@
             background: #e2e8f0;
             z-index: 0;
         }
+        .dark .timeline-line::before {
+            background: #334155; /* Slate-700 pour le mode sombre */
+        }
         @media (min-width: 768px) {
             .timeline-line::before {
                 left: 50%;
@@ -58,7 +69,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-primary selection:text-white">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 antialiased selection:bg-primary selection:text-white transition-colors duration-300">
 
     <!-- NAVIGATION -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
@@ -67,26 +78,40 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#" class="text-2xl font-bold text-primary tracking-tighter">
-                        Thomas<span class="text-slate-800">.BD</span>
+                        Thomas<span class="text-slate-800 dark:text-white">.BD</span>
                     </a>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex space-x-6 items-center">
-                    <a href="#accueil" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Accueil</a>
-                    <a href="#apropos" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">À propos</a>
-                    <a href="#formation" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Formation</a>
-                    <a href="#certifications" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Certifications</a>
-                    <a href="#experience" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Expérience</a>
-                    <a href="#competences" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Compétences</a>
-                    <a href="#projets" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Projets</a>
-                    <a href="#documentation" class="text-slate-600 hover:text-primary font-medium transition text-sm uppercase tracking-wide">Docs</a>
+                    <a href="#accueil" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Accueil</a>
+                    <a href="#apropos" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">À propos</a>
+                    <a href="#formation" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Formation</a>
+                    <a href="#certifications" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Certifications</a>
+                    <a href="#experience" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Expérience</a>
+                    <a href="#competences" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Compétences</a>
+                    <a href="#projets" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Projets</a>
+                    <a href="#documentation" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Docs</a>
+                    
+                    <!-- Bouton Contact -->
                     <a href="#contact" class="bg-primary text-white px-5 py-2 rounded-full font-medium hover:bg-blue-700 transition shadow-md shadow-blue-200 text-sm">Contact</a>
+                    
+                    <!-- Bouton Dark Mode -->
+                    <button id="theme-toggle" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition focus:outline-none" title="Changer le thème">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="lg:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-primary focus:outline-none">
+                <div class="lg:hidden flex items-center gap-4">
+                    <!-- Bouton Dark Mode Mobile -->
+                    <button id="theme-toggle-mobile" class="p-2 text-slate-600 dark:text-slate-300 focus:outline-none">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+
+                    <button id="mobile-menu-btn" class="text-slate-600 dark:text-slate-300 hover:text-primary focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -94,31 +119,31 @@
         </div>
 
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 absolute w-full shadow-xl">
             <div class="px-4 pt-2 pb-6 space-y-1">
-                <a href="#accueil" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Accueil</a>
-                <a href="#apropos" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">À propos</a>
-                <a href="#formation" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Formation</a>
-                <a href="#certifications" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Certifications</a>
-                <a href="#experience" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Expérience</a>
-                <a href="#competences" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Compétences</a>
-                <a href="#projets" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Projets</a>
-                <a href="#documentation" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-md">Documentation</a>
+                <a href="#accueil" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Accueil</a>
+                <a href="#apropos" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">À propos</a>
+                <a href="#formation" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Formation</a>
+                <a href="#certifications" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Certifications</a>
+                <a href="#experience" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Expérience</a>
+                <a href="#competences" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Compétences</a>
+                <a href="#projets" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Projets</a>
+                <a href="#documentation" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Documentation</a>
                 <a href="#contact" class="block px-3 py-3 text-base font-medium text-primary font-bold">Me contacter</a>
             </div>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section id="accueil" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <section id="accueil" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-primary text-sm font-semibold mb-6">
+            <span class="inline-block py-1 px-3 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary dark:text-blue-400 text-sm font-semibold mb-6 border border-blue-200 dark:border-blue-800">
                 Recherche d'alternance
             </span>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 tracking-tight leading-tight">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight leading-tight">
                 Thomas <span class="text-primary relative">Borras-Dupuy</span>
             </h1>
-            <p class="mt-4 text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p class="mt-4 text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
                 Étudiant en BTS SIO option SISR. Passionné par l'administration système, la virtualisation et la cybersécurité.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
@@ -126,26 +151,26 @@
                     Mes réalisations
                 </a>
                 <!-- LIEN DU CV -->
-                <a href="CV-TBD.pdf" target="_blank" class="px-8 py-3.5 rounded-full bg-white text-slate-700 border border-slate-200 font-semibold hover:border-primary hover:text-primary transition duration-300">
+                <a href="CV-TBD.pdf" target="_blank" class="px-8 py-3.5 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-semibold hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition duration-300">
                     <i class="fas fa-file-pdf mr-2"></i> Voir mon CV
                 </a>
             </div>
         </div>
         
         <!-- Background Elements -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30">
-            <div class="absolute top-1/4 left-10 w-64 h-64 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-            <div class="absolute top-1/3 right-10 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30 dark:opacity-20 pointer-events-none">
+            <div class="absolute top-1/4 left-10 w-64 h-64 bg-blue-300 dark:bg-blue-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl animate-blob"></div>
+            <div class="absolute top-1/3 right-10 w-64 h-64 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl animate-blob animation-delay-2000"></div>
         </div>
     </section>
 
     <!-- À PROPOS -->
-    <section id="apropos" class="py-20 bg-white">
+    <section id="apropos" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="relative order-2 md:order-1">
                     <!-- Placeholder Photo -->
-                    <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl bg-slate-100 relative group max-w-md mx-auto">
+                    <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl bg-slate-100 dark:bg-slate-800 relative group max-w-md mx-auto">
                         <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent"></div>
                         <!-- Remplace l'URL ci-dessous par ta photo de CV si tu le souhaites -->
                         <img src="https://ui-avatars.com/api/?name=Thomas+B&background=0f172a&color=fff&size=500&font-size=0.33" alt="Thomas Borras-Dupuy" class="w-full h-full object-cover">
@@ -153,8 +178,8 @@
                 </div>
                 
                 <div class="order-1 md:order-2">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">À propos de moi</h2>
-                    <div class="space-y-4 text-slate-600 text-lg leading-relaxed text-justify">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">À propos de moi</h2>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-400 text-lg leading-relaxed text-justify">
                         <p>
                             Actuellement en deuxième année de <strong>BTS SIO</strong> (Services Informatiques aux Organisations), je suis passionné par l'informatique avec un intérêt particulier pour la <strong>cybersécurité</strong>.
                         </p>
@@ -163,14 +188,14 @@
                         </p>
                     </div>
                     
-                    <div class="mt-8 pt-8 border-t border-slate-100 grid grid-cols-2 gap-6">
+                    <div class="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800 grid grid-cols-2 gap-6">
                         <div>
                             <span class="block text-3xl font-bold text-primary">2</span>
-                            <span class="text-sm text-slate-500">Expériences Pro</span>
+                            <span class="text-sm text-slate-500 dark:text-slate-400">Expériences Pro</span>
                         </div>
                         <div>
                             <span class="block text-3xl font-bold text-primary">3+</span>
-                            <span class="text-sm text-slate-500">Projets Majeurs</span>
+                            <span class="text-sm text-slate-500 dark:text-slate-400">Projets Majeurs</span>
                         </div>
                     </div>
                 </div>
@@ -179,74 +204,74 @@
     </section>
 
     <!-- FORMATION -->
-    <section id="formation" class="py-20 bg-slate-50">
+    <section id="formation" class="py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Mon Parcours Scolaire</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Mon Parcours Scolaire</h2>
                 <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
             </div>
 
             <div class="max-w-3xl mx-auto space-y-8 mb-12">
                 <!-- BTS -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-primary hover:shadow-md transition">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border-l-4 border-primary hover:shadow-md transition dark:border-gray-700">
                     <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
-                        <h3 class="text-xl font-bold text-slate-900">BTS Services Informatiques aux Organisations</h3>
-                        <span class="text-sm font-semibold text-primary bg-blue-50 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">2024 - 2026</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">BTS Services Informatiques aux Organisations</h3>
+                        <span class="text-sm font-semibold text-primary bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">2024 - 2026</span>
                     </div>
-                    <p class="text-slate-500 font-medium">Lycée Public Turgot, Paris (75003)</p>
-                    <p class="text-slate-600 mt-2">Option SISR : Solutions d'Infrastructures, Systèmes et Réseaux.</p>
+                    <p class="text-slate-500 dark:text-slate-400 font-medium">Lycée Public Turgot, Paris (75003)</p>
+                    <p class="text-slate-600 dark:text-slate-300 mt-2">Option SISR : Solutions d'Infrastructures, Systèmes et Réseaux.</p>
                     <!-- Bouton Téléchargement Tableau de Synthèse -->
                     <div class="mt-4">
-                        <a href="Tableau_Synthese_E4.pdf" target="_blank" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition">
+                        <a href="Tableau_Synthese_E4.pdf" target="_blank" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 dark:hover:text-blue-400 transition">
                             <i class="fas fa-file-pdf mr-2"></i> Télécharger le Tableau de Synthèse (Épreuve E4)
                         </a>
                     </div>
                 </div>
 
                 <!-- BAC PRO -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-slate-300 hover:shadow-md transition">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border-l-4 border-slate-300 dark:border-slate-600 hover:shadow-md transition dark:border-t-0 dark:border-r-0 dark:border-b-0">
                     <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
-                        <h3 class="text-xl font-bold text-slate-900">Bac Pro Systèmes Numériques</h3>
-                        <span class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">2021 - 2024</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Bac Pro Systèmes Numériques</h3>
+                        <span class="text-sm font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">2021 - 2024</span>
                     </div>
-                    <p class="text-slate-500 font-medium">Lycée Jean Moulin (78150)</p>
-                    <p class="text-slate-600 mt-2">Mention Bien.</p>
+                    <p class="text-slate-500 dark:text-slate-400 font-medium">Lycée Jean Moulin (78150)</p>
+                    <p class="text-slate-600 dark:text-slate-300 mt-2">Mention Bien.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CERTIFICATIONS -->
-    <section id="certifications" class="py-20 bg-white">
+    <section id="certifications" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Mes Certifications</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Mes Certifications</h2>
                 <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- Certif Cisco -->
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col items-center text-center hover:shadow-lg transition-all group">
-                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
+                <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center hover:shadow-lg transition-all group">
+                    <div class="w-20 h-20 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
                         <!-- Icone Cisco placeholder -->
-                        <i class="fas fa-network-wired text-3xl text-blue-600"></i>
+                        <i class="fas fa-network-wired text-3xl text-blue-600 dark:text-blue-400"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Introduction to Packet Tracer</h3>
-                    <p class="text-slate-500 text-sm mb-6">Cisco Networking Academy</p>
-                    <a href="https://www.credly.com/earner/earned/badge/9dc31c43-9a35-4c84-a143-99c5dfa61ecf" target="_blank" class="inline-flex items-center px-4 py-2 bg-white border border-slate-300 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-primary transition">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Introduction to Packet Tracer</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Cisco Networking Academy</p>
+                    <a href="https://www.credly.com/earner/earned/badge/9dc31c43-9a35-4c84-a143-99c5dfa61ecf" target="_blank" class="inline-flex items-center px-4 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-600 hover:text-primary dark:hover:text-blue-400 transition">
                         <i class="fas fa-certificate mr-2"></i> Voir le badge Credly
                     </a>
                 </div>
 
                 <!-- Certif Linux -->
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col items-center text-center hover:shadow-lg transition-all group">
-                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
+                <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center hover:shadow-lg transition-all group">
+                    <div class="w-20 h-20 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
                         <!-- Icone Linux placeholder -->
-                        <i class="fab fa-linux text-3xl text-slate-800"></i>
+                        <i class="fab fa-linux text-3xl text-slate-800 dark:text-slate-200"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">NDG Linux Unhatched</h3>
-                    <p class="text-slate-500 text-sm mb-6">Cisco & NDG</p>
-                    <a href="https://www.credly.com/earner/earned/badge/96d47589-2f3b-4b6d-8a28-ae164932e8ed" target="_blank" class="inline-flex items-center px-4 py-2 bg-white border border-slate-300 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-primary transition">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">NDG Linux Unhatched</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Cisco & NDG</p>
+                    <a href="https://www.credly.com/earner/earned/badge/96d47589-2f3b-4b6d-8a28-ae164932e8ed" target="_blank" class="inline-flex items-center px-4 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-600 hover:text-primary dark:hover:text-blue-400 transition">
                         <i class="fas fa-certificate mr-2"></i> Voir le badge Credly
                     </a>
                 </div>
@@ -255,11 +280,11 @@
     </section>
 
     <!-- EXPÉRIENCES PROFESSIONNELLES -->
-    <section id="experience" class="py-20 bg-slate-50">
+    <section id="experience" class="py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Expériences Professionnelles</h2>
-                <p class="text-slate-500 mt-2">Stages et missions en entreprise</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Expériences Professionnelles</h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-2">Stages et missions en entreprise</p>
             </div>
 
             <div class="relative timeline-line max-w-4xl mx-auto">
@@ -267,21 +292,21 @@
                 <!-- Micropole (Stage 2) -->
                 <div class="relative pl-16 md:pl-0 mb-12">
                     <!-- Dot -->
-                    <div class="absolute left-6 md:left-1/2 -ml-3 w-6 h-6 bg-primary rounded-full border-4 border-white shadow z-10"></div>
+                    <div class="absolute left-6 md:left-1/2 -ml-3 w-6 h-6 bg-primary rounded-full border-4 border-white dark:border-slate-800 shadow z-10"></div>
                     
                     <div class="md:w-1/2 md:pr-12 md:text-right md:ml-0 ml-0">
                         <span class="text-sm font-bold text-primary tracking-wider uppercase">Déc. 2025 - Janv. 2026</span>
-                        <h3 class="text-2xl font-bold text-slate-900 mt-1">Stage Support IT & Cybersécurité</h3>
-                        <p class="text-slate-600 font-medium mb-2">Micropole (Levallois-Perret)</p>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-left md:ml-auto">
-                            <ul class="space-y-3 text-slate-600 text-sm">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">Stage Support IT & Cybersécurité</h3>
+                        <p class="text-slate-600 dark:text-slate-400 font-medium mb-2">Micropole (Levallois-Perret)</p>
+                        <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 text-left md:ml-auto">
+                            <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-sm">
                                 <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <strong>Cybersécurité&nbsp;:</strong> Audit Wi-Fi et simulation d'attaque "Evil Twin" (Kali Linux, Mikrotik).</li>
                                 <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <strong>Cloud Azure&nbsp;:</strong> Participation à une migration Tenant-to-Tenant (Quest On Demand).</li>
                                 <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <strong>Support&nbsp;:</strong> Gestion et résolution d'incidents complexes.</li>
                             </ul>
                             <!-- LIEN RAPPORT DE STAGE -->
-                            <div class="mt-4 pt-4 border-t border-slate-200">
-                                <a href="Rapport de stage-Micropole-BTS.pdf" target="_blank" class="text-primary hover:text-blue-800 text-sm font-semibold flex items-center md:justify-end">
+                            <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                                <a href="Rapport de stage-Micropole-BTS.pdf" target="_blank" class="text-primary hover:text-blue-800 dark:hover:text-blue-400 text-sm font-semibold flex items-center md:justify-end">
                                     <i class="fas fa-book-open mr-2"></i> Lire le rapport de stage (PDF)
                                 </a>
                             </div>
@@ -292,14 +317,14 @@
                 <!-- Micropole (Stage 1) -->
                 <div class="relative pl-16 md:pl-0 mb-12">
                     <!-- Dot -->
-                    <div class="absolute left-6 md:left-1/2 -ml-3 w-6 h-6 bg-blue-400 rounded-full border-4 border-white shadow z-10"></div>
+                    <div class="absolute left-6 md:left-1/2 -ml-3 w-6 h-6 bg-blue-400 rounded-full border-4 border-white dark:border-slate-800 shadow z-10"></div>
                     
                     <div class="md:w-1/2 md:ml-auto md:pl-12">
                         <span class="text-sm font-bold text-blue-400 tracking-wider uppercase">Mai - Juillet 2025</span>
-                        <h3 class="text-2xl font-bold text-slate-900 mt-1">Stage Infrastructure & Support</h3>
-                        <p class="text-slate-600 font-medium mb-2">Micropole (Levallois-Perret)</p>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                            <ul class="space-y-3 text-slate-600 text-sm">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">Stage Infrastructure & Support</h3>
+                        <p class="text-slate-600 dark:text-slate-400 font-medium mb-2">Micropole (Levallois-Perret)</p>
+                        <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+                            <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-sm">
                                 <li class="flex items-start"><i class="fas fa-check text-blue-400 mt-1 mr-2"></i> <strong>Support&nbsp;:</strong> Gestion de tickets GLPI, maintenance du parc.</li>
                                 <li class="flex items-start"><i class="fas fa-check text-blue-400 mt-1 mr-2"></i> <strong>Infrastructure&nbsp;:</strong> Masterisation et déploiement de postes.</li>
                                 <li class="flex items-start"><i class="fas fa-check text-blue-400 mt-1 mr-2"></i> <strong>Projet SVN&nbsp;:</strong> Gestion et migration des repository de versioning.</li>
@@ -311,14 +336,14 @@
                 <!-- Mairie -->
                 <div class="relative pl-16 md:pl-0">
                     <!-- Dot -->
-                    <div class="absolute left-6 md:left-1/2 -ml-3 w-6 h-6 bg-slate-300 rounded-full border-4 border-white shadow z-10"></div>
+                    <div class="absolute left-6 md:left-1/2 -ml-3 w-6 h-6 bg-slate-300 rounded-full border-4 border-white dark:border-slate-800 shadow z-10"></div>
                     
                     <div class="md:w-1/2 md:pr-12 md:text-right md:ml-0 ml-0">
                         <span class="text-sm font-bold text-slate-400 tracking-wider uppercase">Juin 2023</span>
-                        <h3 class="text-2xl font-bold text-slate-900 mt-1">Stage Support Informatique</h3>
-                        <p class="text-slate-600 font-medium mb-2">Mairie de Garches</p>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-left md:ml-auto">
-                            <ul class="space-y-3 text-slate-600 text-sm">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">Stage Support Informatique</h3>
+                        <p class="text-slate-600 dark:text-slate-400 font-medium mb-2">Mairie de Garches</p>
+                        <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 text-left md:ml-auto">
+                            <ul class="space-y-3 text-slate-600 dark:text-slate-300 text-sm">
                                 <li class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-2"></i> Mise en place d'une structure hiérarchique utilisateurs/machines.</li>
                                 <li class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-2"></i> Traçabilité et gestion efficace du parc.</li>
                                 <li class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-2"></i> Aide à la configuration des outils de com interne.</li>
@@ -332,10 +357,10 @@
     </section>
 
     <!-- COMPÉTENCES -->
-    <section id="competences" class="py-20 bg-white">
+    <section id="competences" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Mes Compétences Techniques</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Mes Compétences Techniques</h2>
                 <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
             </div>
 
@@ -343,14 +368,14 @@
             <div class="grid md:grid-cols-2 gap-8">
                 
                 <!-- Systèmes & Virtualisation -->
-                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-blue-500">
+                <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-blue-500 dark:border-blue-600">
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-primary mr-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-lg flex items-center justify-center text-primary dark:text-blue-400 mr-4">
                             <i class="fab fa-windows text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Systèmes & Virtualisation</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Systèmes & Virtualisation</h3>
                     </div>
-                    <ul class="space-y-3 text-slate-600">
+                    <ul class="space-y-3 text-slate-600 dark:text-slate-300">
                         <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-3 min-w-[16px]"></i> <span><strong>OS&nbsp;:</strong> Installation, config & durcissement (Windows Server, Linux).</span></li>
                         <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-3 min-w-[16px]"></i> <span><strong>Admin&nbsp;:</strong> Gestion des comptes, droits, GPO & stratégies de groupe.</span></li>
                         <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-3 min-w-[16px]"></i> <span><strong>Scripting&nbsp;:</strong> Automatisation de tâches via Bash et PowerShell.</span></li>
@@ -360,14 +385,14 @@
                 </div>
 
                 <!-- Réseaux -->
-                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-indigo-500">
+                <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-indigo-500 dark:border-indigo-600">
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 mr-4">
+                        <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg flex items-center justify-center text-indigo-600 dark:text-indigo-400 mr-4">
                             <i class="fas fa-network-wired text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Réseaux & Infrastructure</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Réseaux & Infrastructure</h3>
                     </div>
-                    <ul class="space-y-3 text-slate-600">
+                    <ul class="space-y-3 text-slate-600 dark:text-slate-300">
                         <li class="flex items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Architecture&nbsp;:</strong> Conception LAN/VLAN et adressage IP.</span></li>
                         <li class="flex items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Matériel&nbsp;:</strong> Config Routeurs, Switchs & Pare-feu (Cisco, PfSense).</span></li>
                         <li class="flex items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Analyse&nbsp;:</strong> Analyse de trafic, Wireshark, sécurité périmétrique.</span></li>
@@ -376,14 +401,14 @@
                 </div>
 
                 <!-- Cybersécurité (MODIFIÉ) -->
-                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-red-500">
+                <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-red-500 dark:border-red-600">
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center text-red-600 mr-4">
+                        <div class="w-12 h-12 bg-red-100 dark:bg-red-900/50 rounded-lg flex items-center justify-center text-red-600 dark:text-red-400 mr-4">
                             <i class="fas fa-shield-halved text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Cybersécurité & Veille</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Cybersécurité & Veille</h3>
                     </div>
-                    <ul class="space-y-3 text-slate-600">
+                    <ul class="space-y-3 text-slate-600 dark:text-slate-300">
                         <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Offensive&nbsp;:</strong> Pentesting (Evil Twin), Audit Wi-Fi (Airgeddon).</span></li>
                         <!-- SUPPRESSION DE WAZUH/GRAYLOG -->
                         <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Contrôle&nbsp;:</strong> Gestion des accès, MFA, politiques de mots de passe.</span></li>
@@ -392,14 +417,14 @@
                 </div>
 
                 <!-- Gestion de Projet (MODIFIÉ) -->
-                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-emerald-500">
+                <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border-t-4 border-emerald-500 dark:border-emerald-600">
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 mr-4">
+                        <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 rounded-lg flex items-center justify-center text-emerald-600 dark:text-emerald-400 mr-4">
                             <i class="fas fa-tasks text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Gestion de Projet</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Gestion de Projet</h3>
                     </div>
-                    <ul class="space-y-3 text-slate-600">
+                    <ul class="space-y-3 text-slate-600 dark:text-slate-300">
                         <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Pilotage&nbsp;:</strong> Planification, suivi des tâches et reporting.</span></li>
                         <!-- SUPPRESSION TRELLO -->
                         <li class="flex items-start"><i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 min-w-[16px]"></i> <span><strong>Méthodes&nbsp;:</strong> Méthodologies agiles (Scrum, Kanban) & outils (Teams).</span></li>
@@ -414,70 +439,70 @@
     </section>
 
     <!-- PROJETS -->
-    <section id="projets" class="py-20 bg-slate-50">
+    <section id="projets" class="py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Projets & Réalisations</h2>
-                    <p class="mt-2 text-slate-500">Mise en pratique en entreprise et en formation.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Projets & Réalisations</h2>
+                    <p class="mt-2 text-slate-500 dark:text-slate-400">Mise en pratique en entreprise et en formation.</p>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Projet 1 : Pentest Evil Twin -->
-                <article class="bg-white rounded-xl overflow-hidden border border-slate-100 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
-                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                <article class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-slate-900 dark:bg-slate-800 relative overflow-hidden flex items-center justify-center">
                         <i class="fas fa-user-secret text-5xl text-red-500 opacity-90"></i>
                         <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">Cybersécurité</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Audit Wi-Fi "Evil Twin"</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-1">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Audit Wi-Fi "Evil Twin"</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-1">
                             Simulation d'attaque "Jumeau Maléfique" pour auditer la sécurité Wi-Fi. Utilisation d'un routeur Mikrotik et Kali Linux (Airgeddon) pour capturer des handshakes WPA2 via un portail captif frauduleux.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Kali Linux</span>
-                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Mikrotik</span>
-                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Social Eng.</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded">Kali Linux</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded">Mikrotik</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded">Social Eng.</span>
                         </div>
                     </div>
                 </article>
 
                 <!-- Projet 2 : Migration Azure -->
-                <article class="bg-white rounded-xl overflow-hidden border border-slate-100 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
-                    <div class="h-48 bg-blue-600 relative overflow-hidden flex items-center justify-center">
+                <article class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-blue-600 dark:bg-blue-700 relative overflow-hidden flex items-center justify-center">
                         <i class="fab fa-microsoft text-5xl text-white opacity-90"></i>
                         <div class="absolute top-4 right-4 bg-blue-800 text-white text-xs font-bold px-2 py-1 rounded">Cloud</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Migration Azure Tenant-to-Tenant</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-1">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Migration Azure Tenant-to-Tenant</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-1">
                             Fusion opérationnelle des SI. Migration des identités et données (Exchange, OneDrive) via Quest On Demand. Supervision des flux, analyse des logs d'erreurs et support utilisateur post-migration.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Azure AD</span>
-                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Exchange</span>
-                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">Quest</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded">Azure AD</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded">Exchange</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded">Quest</span>
                         </div>
                     </div>
                 </article>
 
                 <!-- Projet 3 : SCCM -->
-                <article class="bg-white rounded-xl overflow-hidden border border-slate-100 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
-                    <div class="h-48 bg-blue-900 relative overflow-hidden flex items-center justify-center">
+                <article class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-blue-900 dark:bg-blue-950 relative overflow-hidden flex items-center justify-center">
                         <i class="fas fa-desktop text-5xl text-white opacity-80"></i>
                         <div class="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Infra</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Déploiement Automatisé SCCM</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-1">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Déploiement Automatisé SCCM</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-1">
                             Masterisation et déploiement de postes de travail. Scripting PowerShell pour automatiser la création des comptes machines dans l'AD et déploiement via PXE Boot.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">SCCM</span>
-                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">PowerShell</span>
-                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded">PXE</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded">SCCM</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded">PowerShell</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded">PXE</span>
                         </div>
                     </div>
                 </article>
@@ -487,43 +512,43 @@
     </section>
 
     <!-- DOCUMENTATION TECHNIQUE (NOUVELLE SECTION) -->
-    <section id="documentation" class="py-20 bg-slate-50">
+    <section id="documentation" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Documentation Technique</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Documentation Technique</h2>
                 <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-                <p class="mt-4 text-slate-600">Procédures et guides techniques rédigés lors de mes projets.</p>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Procédures et guides techniques rédigés lors de mes projets.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- GLPI -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition group">
+                <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition group">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mr-4">
+                        <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400 mr-4">
                             <i class="fas fa-file-alt text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Serveur GLPI</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Serveur GLPI</h3>
                     </div>
-                    <p class="text-slate-600 mb-6">
+                    <p class="text-slate-600 dark:text-slate-300 mb-6">
                         Documentation complète sur l'installation et la configuration de GLPI sur Debian 12 (Apache, MariaDB) ainsi que la mise en place de l'agent d'inventaire.
                     </p>
-                    <a href="glpi.pdf" target="_blank" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition">
+                    <a href="glpi.pdf" target="_blank" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 dark:hover:text-blue-400 transition">
                         <i class="fas fa-download mr-2"></i> Télécharger le PDF
                     </a>
                 </div>
 
                 <!-- pfSense -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition group">
+                <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition group">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mr-4">
+                        <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/50 rounded-lg flex items-center justify-center text-orange-600 dark:text-orange-400 mr-4">
                             <i class="fas fa-shield-alt text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Pare-feu PfSense</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Pare-feu PfSense</h3>
                     </div>
-                    <p class="text-slate-600 mb-6">
+                    <p class="text-slate-600 dark:text-slate-300 mb-6">
                         Guide d'installation et de configuration de pfSense : gestion des interfaces réseaux (WAN/LAN/VLANs) et création de règles de filtrage.
                     </p>
-                    <a href="pfsense.pdf" target="_blank" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition">
+                    <a href="pfsense.pdf" target="_blank" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 dark:hover:text-blue-400 transition">
                         <i class="fas fa-download mr-2"></i> Télécharger le PDF
                     </a>
                 </div>
@@ -532,24 +557,24 @@
     </section>
 
     <!-- VEILLE (MODIFIÉ) -->
-    <section id="veille" class="py-20 bg-white">
+    <section id="veille" class="py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900">Veille Technologique</h2>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Veille Technologique</h2>
                 <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-                <p class="mt-4 text-slate-600">
+                <p class="mt-4 text-slate-600 dark:text-slate-400">
                     Sujet&nbsp;: <strong>Microsoft Cloud (2025-2026)</strong> — Entre hyper-croissance de l'IA et défis de souveraineté.
                 </p>
             </div>
             
-            <div class="bg-slate-50 rounded-2xl p-8 shadow-sm border-l-4 border-primary mb-10">
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-sm border-l-4 border-primary mb-10">
                 <div class="flex items-center mb-6">
-                    <div class="p-3 bg-blue-100 rounded-lg text-primary mr-4">
+                    <div class="p-3 bg-blue-100 dark:bg-blue-900/50 rounded-lg text-primary dark:text-blue-400 mr-4">
                         <i class="fas fa-chart-line text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-800">Synthèse (Sept 2025 - Fév 2026)</h3>
+                    <h3 class="text-2xl font-bold text-slate-800 dark:text-white">Synthèse (Sept 2025 - Fév 2026)</h3>
                 </div>
-                <div class="text-slate-600 space-y-4 leading-relaxed text-left">
+                <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-left">
                     <p>
                         L'écosystème Microsoft Cloud (Azure, Microsoft 365) a opéré un virage stratégique majeur, passant de l'adoption à l'industrialisation de l'IA générative. Trois tendances redéfinissent son impact&nbsp;:
                     </p>
@@ -568,50 +593,50 @@
             </div>
 
             <!-- Articles sélectionnés -->
-            <h3 class="text-xl font-bold text-slate-900 mb-6 px-2 border-l-4 border-slate-300 pl-4">Sélection d'Articles Clés</h3>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 px-2 border-l-4 border-slate-300 dark:border-slate-700 pl-4">Sélection d'Articles Clés</h3>
             <div class="grid md:grid-cols-2 gap-6">
                 
                 <!-- Article 1 -->
-                <a href="https://www.lemondeinformatique.fr/actualites/lire-les-entreprises-passent-a-la-vitesse-superieure-sur-copilot-96437.html" target="_blank" rel="noopener noreferrer" class="block bg-white p-6 rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition group">
+                <a href="https://www.lemondeinformatique.fr/actualites/lire-les-entreprises-passent-a-la-vitesse-superieure-sur-copilot-96437.html" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary dark:hover:border-primary hover:shadow-md transition group">
                     <div class="flex justify-between items-start mb-2">
-                        <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">IA / Stratégie</span>
+                        <span class="text-xs font-bold text-blue-600 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">IA / Stratégie</span>
                         <span class="text-xs text-slate-400">Actualité</span>
                     </div>
-                    <h4 class="text-lg font-bold text-slate-800 group-hover:text-primary mb-2">Les entreprises passent à la vitesse supérieure sur Copilot</h4>
-                    <p class="text-sm text-slate-500 mb-3">L'adoption de l'assistant IA de Microsoft s'accélère dans le monde professionnel, transformant les méthodes de travail.</p>
+                    <h4 class="text-lg font-bold text-slate-800 dark:text-white group-hover:text-primary mb-2">Les entreprises passent à la vitesse supérieure sur Copilot</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">L'adoption de l'assistant IA de Microsoft s'accélère dans le monde professionnel, transformant les méthodes de travail.</p>
                     <span class="text-xs font-medium text-slate-400"><i class="fas fa-newspaper mr-1"></i> Le Monde Informatique</span>
                 </a>
 
                 <!-- Article 2 -->
-                <a href="https://www.it-connect.fr/ignite-2025-retour-sur-les-principales-annonces-de-microsoft/" target="_blank" rel="noopener noreferrer" class="block bg-white p-6 rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition group">
+                <a href="https://www.it-connect.fr/ignite-2025-retour-sur-les-principales-annonces-de-microsoft/" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary dark:hover:border-primary hover:shadow-md transition group">
                     <div class="flex justify-between items-start mb-2">
-                        <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded">Événement</span>
+                        <span class="text-xs font-bold text-purple-600 bg-purple-50 dark:bg-purple-900/30 px-2 py-1 rounded">Événement</span>
                         <span class="text-xs text-slate-400">Novembre 2025</span>
                     </div>
-                    <h4 class="text-lg font-bold text-slate-800 group-hover:text-primary mb-2">Ignite 2025 : Retour sur les principales annonces</h4>
-                    <p class="text-sm text-slate-500 mb-3">Synthèse des innovations majeures présentées lors de la conférence annuelle de Microsoft (IA, Sécurité, Cloud).</p>
+                    <h4 class="text-lg font-bold text-slate-800 dark:text-white group-hover:text-primary mb-2">Ignite 2025 : Retour sur les principales annonces</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Synthèse des innovations majeures présentées lors de la conférence annuelle de Microsoft (IA, Sécurité, Cloud).</p>
                     <span class="text-xs font-medium text-slate-400"><i class="fas fa-newspaper mr-1"></i> IT Connect</span>
                 </a>
 
                 <!-- Article 3 -->
-                <a href="https://www.it-connect.fr/microsoft-previent-exchange-online-ews-sera-desactive-en-avril-2027/" target="_blank" rel="noopener noreferrer" class="block bg-white p-6 rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition group">
+                <a href="https://www.it-connect.fr/microsoft-previent-exchange-online-ews-sera-desactive-en-avril-2027/" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary dark:hover:border-primary hover:shadow-md transition group">
                     <div class="flex justify-between items-start mb-2">
-                        <span class="text-xs font-bold text-red-600 bg-red-50 px-2 py-1 rounded">Cycle de vie</span>
+                        <span class="text-xs font-bold text-red-600 bg-red-50 dark:bg-red-900/30 px-2 py-1 rounded">Cycle de vie</span>
                         <span class="text-xs text-slate-400">Annonce</span>
                     </div>
-                    <h4 class="text-lg font-bold text-slate-800 group-hover:text-primary mb-2">Exchange Online : Fin de EWS annoncée pour 2027</h4>
-                    <p class="text-sm text-slate-500 mb-3">Microsoft prépare la dépréciation des Exchange Web Services, poussant vers l'adoption de Microsoft Graph.</p>
+                    <h4 class="text-lg font-bold text-slate-800 dark:text-white group-hover:text-primary mb-2">Exchange Online : Fin de EWS annoncée pour 2027</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Microsoft prépare la dépréciation des Exchange Web Services, poussant vers l'adoption de Microsoft Graph.</p>
                     <span class="text-xs font-medium text-slate-400"><i class="fas fa-newspaper mr-1"></i> IT Connect</span>
                 </a>
 
                 <!-- Article 4 -->
-                <a href="https://www.ionos.fr/digitalguide/serveur/outils/quest-ce-que-onedrive/" target="_blank" rel="noopener noreferrer" class="block bg-white p-6 rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition group">
+                <a href="https://www.ionos.fr/digitalguide/serveur/outils/quest-ce-que-onedrive/" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary dark:hover:border-primary hover:shadow-md transition group">
                     <div class="flex justify-between items-start mb-2">
-                        <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Cloud / Stockage</span>
+                        <span class="text-xs font-bold text-blue-600 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">Cloud / Stockage</span>
                         <span class="text-xs text-slate-400">Dossier</span>
                     </div>
-                    <h4 class="text-lg font-bold text-slate-800 group-hover:text-primary mb-2">Qu'est-ce que OneDrive ? Guide complet</h4>
-                    <p class="text-sm text-slate-500 mb-3">Comprendre le fonctionnement, les fonctionnalités et l'intégration de la solution de stockage cloud de Microsoft.</p>
+                    <h4 class="text-lg font-bold text-slate-800 dark:text-white group-hover:text-primary mb-2">Qu'est-ce que OneDrive ? Guide complet</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Comprendre le fonctionnement, les fonctionnalités et l'intégration de la solution de stockage cloud de Microsoft.</p>
                     <span class="text-xs font-medium text-slate-400"><i class="fas fa-newspaper mr-1"></i> IONOS Digital Guide</span>
                 </a>
 
@@ -620,7 +645,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-20 bg-slate-900 text-white">
+    <section id="contact" class="py-20 bg-slate-900 text-white transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-16">
                 <div>
@@ -661,19 +686,19 @@
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-2xl p-8 text-slate-800">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 text-slate-800 dark:text-white">
                     <form action="https://formspree.io/f/VOTRE_ID_ICI" method="POST" class="space-y-6">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Nom complet</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="Votre nom">
+                            <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Nom complet</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="Votre nom">
                         </div>
                         <div>
-                            <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="votre@email.com">
+                            <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="votre@email.com">
                         </div>
                         <div>
-                            <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="Votre message..."></textarea>
+                            <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="Votre message..."></textarea>
                         </div>
                         <!-- IMPORTANT: Remplace l'action du formulaire avec ton lien Formspree -->
                         <button type="button" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg shadow-blue-500/30">
@@ -699,13 +724,47 @@
     </footer>
 
     <script>
-        // Menu Mobile Toggle
+        // --- Dark Mode Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+        const htmlElement = document.documentElement;
+
+        // Fonction pour mettre à jour le thème
+        function updateTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+        }
+
+        // Fonction pour basculer le thème
+        function toggleTheme() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        }
+
+        // Initialisation
+        updateTheme();
+
+        // Event Listeners
+        if(themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if(themeToggleBtnMobile) themeToggleBtnMobile.addEventListener('click', toggleTheme);
+
+
+        // --- Menu Mobile Toggle ---
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+        if(btn) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        }
 
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
@@ -713,7 +772,7 @@
             });
         });
 
-        // Changement de style navbar au scroll
+        // --- Navbar Scroll Effect ---
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 10) {
