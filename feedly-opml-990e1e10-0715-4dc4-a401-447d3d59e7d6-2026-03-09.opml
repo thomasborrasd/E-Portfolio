@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<opml version="1.0">
+    <head>
+        <title>Thomas subscriptions in feedly Cloud</title>
+    </head>
+    <body>
+        <outline text="Cloud" title="Cloud">
+            <outline type="rss" text="Cloud : Derniers contenus" title="Cloud : Derniers contenus" xmlUrl="http://www.journaldunet.com/solutions/cloud-computing/rss/" htmlUrl="https://www.journaldunet.com/cloud/"/>
+            <outline type="rss" text="Actualités le-monde-du-cloud-computing" title="Actualités le-monde-du-cloud-computing" xmlUrl="http://www.lemondeinformatique.fr/flux-rss/thematique/le-monde-du-cloud-computing/rss.xml" htmlUrl="https://www.lemondeinformatique.fr/flux-rss/le-monde-du-cloud-computing/rss.xml"/>
+            <outline type="rss" text="Le Blog Amazon Web Services" title="Le Blog Amazon Web Services" xmlUrl="https://aws.amazon.com/fr/blogs/france/feed/" htmlUrl="https://aws.amazon.com/fr/blogs/france/"/>
+            <outline type="rss" text="OVHcloud Blog" title="OVHcloud Blog" xmlUrl="https://www.ovh.com/fr/blog/feed/" htmlUrl="https://blog.ovhcloud.com/"/>
+            <outline type="rss" text="Actualités saas" title="Actualités saas" xmlUrl="http://www.lemondeinformatique.fr/flux-rss/saas/rss.xml" htmlUrl="https://www.lemondeinformatique.fr/flux-rss/saas/rss.xml"/>
+        </outline>
+    </body>
+</opml>
