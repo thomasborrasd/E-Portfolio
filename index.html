@@ -83,15 +83,15 @@
                 </div>
                 
                 <!-- Desktop Menu -->
-                <div class="hidden lg:flex space-x-6 items-center">
+                <div class="hidden xl:flex space-x-6 items-center">
                     <a href="#accueil" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Accueil</a>
                     <a href="#apropos" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">À propos</a>
                     <a href="#formation" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Formation</a>
-                    <a href="#certifications" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Certifications</a>
                     <a href="#experience" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Expérience</a>
                     <a href="#competences" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Compétences</a>
-                    <a href="#documentation" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Docs</a>
                     <a href="#projets" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Projets</a>
+                    <a href="#epreuve-e6" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide font-bold">Épreuve E6</a>
+                    <a href="#veille" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition text-sm uppercase tracking-wide">Veille</a>
                     
                     <!-- Bouton Contact -->
                     <a href="#contact" class="bg-primary text-white px-5 py-2 rounded-full font-medium hover:bg-blue-700 transition shadow-md shadow-blue-200 text-sm">Contact</a>
@@ -104,7 +104,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="lg:hidden flex items-center gap-4">
+                <div class="xl:hidden flex items-center gap-4">
                     <!-- Bouton Dark Mode Mobile -->
                     <button id="theme-toggle-mobile" class="p-2 text-slate-600 dark:text-slate-300 focus:outline-none">
                         <i class="fas fa-moon dark:hidden"></i>
@@ -119,7 +119,7 @@
         </div>
 
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 absolute w-full shadow-xl">
+        <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 absolute w-full shadow-xl">
             <div class="px-4 pt-2 pb-6 space-y-1">
                 <a href="#accueil" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Accueil</a>
                 <a href="#apropos" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">À propos</a>
@@ -129,6 +129,8 @@
                 <a href="#competences" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Compétences</a>
                 <a href="#documentation" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Documentation</a>
                 <a href="#projets" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Projets</a>
+                <a href="#epreuve-e6" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md font-bold">Épreuve E6</a>
+                <a href="#veille" class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md">Veille</a>
                 <a href="#contact" class="block px-3 py-3 text-base font-medium text-primary font-bold">Me contacter</a>
             </div>
         </div>
@@ -194,7 +196,7 @@
                             <span class="text-sm text-slate-500 dark:text-slate-400">Expériences Pro</span>
                         </div>
                         <div>
-                            <span class="block text-3xl font-bold text-primary">3+</span>
+                            <span class="block text-3xl font-bold text-primary">5+</span>
                             <span class="text-sm text-slate-500 dark:text-slate-400">Projets Majeurs</span>
                         </div>
                     </div>
@@ -251,7 +253,6 @@
                 <!-- Certif Cisco -->
                 <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center hover:shadow-lg transition-all group">
                     <div class="w-20 h-20 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
-                        <!-- Icone Cisco placeholder -->
                         <i class="fas fa-network-wired text-3xl text-blue-600 dark:text-blue-400"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Introduction to Packet Tracer</h3>
@@ -264,7 +265,6 @@
                 <!-- Certif Linux -->
                 <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center hover:shadow-lg transition-all group">
                     <div class="w-20 h-20 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
-                        <!-- Icone Linux placeholder -->
                         <i class="fab fa-linux text-3xl text-slate-800 dark:text-slate-200"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">NDG Linux Unhatched</h3>
@@ -461,13 +461,13 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Documentation Technique</h2>
                 <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-                <p class="mt-4 text-slate-600 dark:text-slate-400">Procédures et guides techniques rédigés lors de mes projets.</p>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Documents de synthèse et d'architecture liés à ma formation.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                
-                <!-- Schéma Réseau & Synthèse (Groupe Formation) -->
-                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition group relative overflow-hidden">
+            <!-- On centre le bloc unique pour le schéma et la synthèse -->
+            <div class="flex justify-center max-w-3xl mx-auto">
+                <!-- Schéma Réseau & Synthèse -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition group relative overflow-hidden w-full">
                     <div class="absolute top-0 right-0 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-xs font-bold px-3 py-1 rounded-bl-lg">BTS SIO</div>
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 mr-4">
@@ -476,7 +476,7 @@
                         <h3 class="text-xl font-bold text-slate-900 dark:text-white">Schéma Réseau & Synthèse</h3>
                     </div>
                     <p class="text-slate-600 dark:text-slate-300 mb-6">
-                        Architecture réseau complète de la formation et tableau de synthèse des compétences E4 validées.
+                        Architecture réseau complète mise en place lors de la formation (VLANs, Routeurs, Hyperviseurs) et tableau de synthèse des compétences E4 validées.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-3">
                         <a href="Schema_reseau.pdf" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition">
@@ -487,44 +487,11 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- GLPI -->
-                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400 mr-4">
-                            <i class="fas fa-file-alt text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Serveur GLPI</h3>
-                    </div>
-                    <p class="text-slate-600 dark:text-slate-300 mb-6">
-                        Installation et configuration de GLPI sur Debian 12 (Apache, MariaDB) et mise en place de l'agent d'inventaire.
-                    </p>
-                    <a href="glpi.pdf" target="_blank" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 dark:hover:text-blue-400 transition">
-                        <i class="fas fa-download mr-2"></i> Télécharger le PDF
-                    </a>
-                </div>
-
-                <!-- pfSense -->
-                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/50 rounded-lg flex items-center justify-center text-orange-600 dark:text-orange-400 mr-4">
-                            <i class="fas fa-shield-alt text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Pare-feu PfSense</h3>
-                    </div>
-                    <p class="text-slate-600 dark:text-slate-300 mb-6">
-                        Guide d'installation et configuration pfSense : gestion des interfaces (WAN/LAN/VLANs) et filtrage.
-                    </p>
-                    <a href="pfsense.pdf" target="_blank" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 dark:hover:text-blue-400 transition">
-                        <i class="fas fa-download mr-2"></i> Télécharger le PDF
-                    </a>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- PROJETS -->
+    <!-- PROJETS & RÉALISATIONS -->
     <section id="projets" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -534,18 +501,388 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <!-- Grille sur 3 colonnes pour accueillir les 5 projets de manière fluide -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Projet 1 : Contrôleur de Domaine -->
+                <!-- Projet 1 : Mairie (Chef de projet) -->
+                <article class="bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-teal-900 relative overflow-hidden flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-5xl text-teal-400 opacity-90"></i>
+                        <div class="absolute top-4 right-4 bg-teal-600 text-white text-xs font-bold px-2 py-1 rounded">Réseau & Sécurité</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Projet : Sécurisation Réseau Mairie</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 flex-1">
+                            Rôle de chef de projet pour la sécurisation de la salle d'exposition de la mairie de Maisons-Alfort. Analyse des besoins, conception d'une topologie sous Cisco Packet Tracer (VLANs, DHCP), contrôles d'accès et plan de continuité (PCA/PRA).
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto mb-4">
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">Packet Tracer</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">VLAN / PCA</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">Gestion Projet</span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <a href="Cahier charge projet.pdf" target="_blank" class="inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700 dark:hover:text-blue-400 transition">
+                                <i class="fas fa-file-pdf mr-2"></i> Cahier des charges
+                            </a>
+                            <a href="Cahier de tests.pdf" target="_blank" class="inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700 dark:hover:text-blue-400 transition">
+                                <i class="fas fa-file-pdf mr-2"></i> Cahier de tests
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 2 : Pare-feu PfSense -->
+                <article class="bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-orange-900 relative overflow-hidden flex items-center justify-center">
+                        <i class="fas fa-fire-alt text-5xl text-orange-400 opacity-90"></i>
+                        <div class="absolute top-4 right-4 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded">Infrastructure</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Déploiement Pare-feu PfSense</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 flex-1">
+                            Installation et configuration d'un routeur virtuel et pare-feu pfSense. Gestion des interfaces réseaux (WAN, LAN, VLANs) et création de règles de filtrage strictes pour sécuriser les flux entre les différents réseaux.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto mb-4">
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">PfSense</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">Firewall</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">VLAN</span>
+                        </div>
+                        <a href="pfsense.pdf" target="_blank" class="inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700 dark:hover:text-blue-400 transition">
+                            <i class="fas fa-file-pdf mr-2"></i> Voir la documentation
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Projet 3 : GLPI -->
+                <article class="bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-purple-900 relative overflow-hidden flex items-center justify-center">
+                        <i class="fas fa-ticket-alt text-5xl text-purple-400 opacity-90"></i>
+                        <div class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded">Services</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Mise en place Serveur GLPI</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 flex-1">
+                            Installation et configuration de la solution de Helpdesk et gestion de parc GLPI sur un serveur Debian 12. Paramétrage des services web (Apache), base de données (MariaDB) et déploiement de l'agent d'inventaire.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto mb-4">
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">GLPI</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">Debian 12</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">Ticketing</span>
+                        </div>
+                        <a href="glpi.pdf" target="_blank" class="inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700 dark:hover:text-blue-400 transition">
+                            <i class="fas fa-file-pdf mr-2"></i> Voir la documentation
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Projet 4 : Contrôleur de Domaine -->
                 <article class="bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
                     <div class="h-48 bg-blue-900 relative overflow-hidden flex items-center justify-center">
                         <i class="fab fa-windows text-5xl text-white opacity-80"></i>
                         <div class="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Système</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
-                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Contrôleur de Domaine & GPO</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Déploiement Active Directory</h3>
                         <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 flex-1">
-                            Mise en place d'un environnement Active Directory complet sous Windows Server. Configuration des services DNS, DHCP, gestion des utilisateurs et déploiement de stratégies de groupe (GPO) pour sécuriser le parc.
+                            Installation d'un annuaire LDAP Active Directory (AD DS) sous Windows Server 2022. Mise en place du DNS, intégration des postes, structuration en Unités d'Organisation (UO) et sécurisation via des stratégies de groupe (GPO).
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto mb-4">
-                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">Win Server 2022</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">AD DS</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">GPO</span>
+                        </div>
+                        <a href="Active_Directory.pdf" target="_blank" class="inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700 dark:hover:text-blue-400 transition">
+                            <i class="fas fa-file-pdf mr-2"></i> Voir la documentation
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Projet 5 : Infra Proxmox -->
+                <article class="bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 card-hover group cursor-pointer flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center">
+                        <i class="fas fa-server text-5xl text-orange-500 opacity-90"></i>
+                        <div class="absolute top-4 right-4 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded">Virtualisation</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Infrastructure Virtuelle Proxmox</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 flex-1">
+                            Déploiement bare-metal d'un hyperviseur Proxmox VE. Configuration des interfaces réseaux (Bridge, IP statique) et préparation de l'environnement pour l'hébergement de machines virtuelles (Debian/Windows) et de conteneurs LXC.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto mb-4">
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">Proxmox VE</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">LXC / VM</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 rounded">Réseau</span>
+                        </div>
+                        <a href="Proxmox.pdf" target="_blank" class="inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700 dark:hover:text-blue-400 transition">
+                            <i class="fas fa-file-pdf mr-2"></i> Voir la documentation
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EPREUVE E6 (NOUVELLE SECTION) -->
+    <section id="epreuve-e6" class="py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Épreuve E6 - Réalisations Professionnelles</h2>
+                <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Fiches descriptives des situations professionnelles présentées à l'examen du BTS SIO.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Fiche Situation 1 -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 mr-4">
+                            <i class="fas fa-file-contract text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Situation Professionnelle 1</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 mb-2 font-medium">Mise en place d'un contrôleur de domaine Active Directory</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">
+                        Conception et déploiement d'une architecture réseau sécurisée intégrant un Hyperviseur Proxmox, un pare-feu pfSense et un serveur Windows 2022 (AD DS, DNS, DHCP) pour la gestion d'un parc client.
+                    </p>
+                    <a href="Situation_Professionnelle_1.pdf" target="_blank" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 dark:hover:text-blue-400 transition">
+                        <i class="fas fa-download mr-2"></i> Télécharger la fiche E6 (PDF)
+                    </a>
+                </div>
+
+                <!-- Fiche Situation 2 -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/50 rounded-lg flex items-center justify-center text-orange-600 dark:text-orange-400 mr-4">
+                            <i class="fas fa-file-contract text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Situation Professionnelle 2</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 mb-2 font-medium">Installation d'un environnement de travail PROXMOX</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">
+                        Mise à disposition d'un environnement de virtualisation vierge avec pour objectif le déploiement en autonomie d'une infrastructure réseau cloisonnée et sécurisée sous Proxmox VE.
+                    </p>
+                    <a href="Situation_Professionnelle_2.pdf" target="_blank" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 dark:hover:text-blue-400 transition">
+                        <i class="fas fa-download mr-2"></i> Télécharger la fiche E6 (PDF)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VEILLE TECHNOLOGIQUE -->
+    <section id="veille" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Veille Technologique</h2>
+                <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">
+                    Sujet&nbsp;: <strong>Cloud Computing</strong> — Les nouveaux enjeux de la transformation numérique.
+                </p>
+            </div>
+            
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 shadow-sm border-l-4 border-primary mb-10">
+                <div class="flex items-center mb-6">
+                    <div class="p-3 bg-blue-100 dark:bg-blue-900/50 rounded-lg text-primary dark:text-blue-400 mr-4">
+                        <i class="fas fa-cloud text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800 dark:text-white">Les nouveaux enjeux du Cloud Computing</h3>
+                </div>
+                <div class="text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed text-left">
+                    <p>
+                        Le Cloud Computing n'est plus une simple solution de stockage externalisée : c'est devenu le moteur principal de la transformation numérique des organisations. À travers ma veille technologique, j'ai choisi d'analyser comment cette technologie évolue au quotidien, entre une course effrénée à l'innovation et la nécessité vitale de protéger les données critiques.
+                    </p>
+                    <p>Pour structurer mon analyse, j'ai classé mes recherches autour de trois axes majeurs :</p>
+                    <ul class="list-none space-y-3 mt-4">
+                        <li class="flex items-start">
+                            <span class="text-xl mr-3">🚀</span>
+                            <span><strong>Innovations & Techniques :</strong> L'intégration massive de l'Intelligence Artificielle dans le Cloud, l'automatisation des infrastructures et l'amélioration de la flexibilité (réversibilité, sauvegarde).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-xl mr-3">🏢</span>
+                            <span><strong>Stratégie & Impact en Entreprise :</strong> La transformation des modèles économiques, l'optimisation des budgets technologiques (démarche FinOps) et la modernisation des environnements de travail (DaaS).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-xl mr-3">🛡️</span>
+                            <span><strong>Risques & Responsabilités :</strong> Les limites du modèle actuel face aux pannes, la dépendance aux géants technologiques (Hyperscalers), et l'enjeu crucial de la souveraineté numérique (Cloud de confiance européen).</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Preuves et Méthodologie -->
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 px-2 border-l-4 border-slate-300 dark:border-slate-700 pl-4 mt-10">Méthodologie & Outils</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                
+                <!-- Methodologie PDF -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-file-pdf text-xl"></i>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Méthodologie de Veille</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Document détaillant mon processus de collecte, de filtrage (Feedly, Alertes Google) et d'analyse de l'information.</p>
+                    <a href="Methodologie_Veille_Cloud_BORRAS_Thomas.pdf" target="_blank" class="inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700 dark:hover:text-blue-400 transition">
+                        <i class="fas fa-download mr-2"></i> Télécharger le PDF
+                    </a>
+                </div>
+
+                <!-- OPML File -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-rss text-xl"></i>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Fichier OPML (Flux RSS)</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Export standard de mes sources d'information, prouvant l'interopérabilité de ma veille technologique.</p>
+                    <a href="feedly-opml-990e1e10-0715-4dc4-a401-447d3d59e7d6-2026-03-09.opml" download class="inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700 dark:hover:text-blue-400 transition">
+                        <i class="fas fa-download mr-2"></i> Télécharger l'OPML
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 bg-slate-900 text-white transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Me contacter</h2>
+                    <p class="text-slate-400 text-lg mb-8">
+                        À la recherche d'une alternance ou de nouveaux défis en administration système et réseau ? N'hésitez pas à me contacter.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium">Email</h3>
+                                <a href="mailto:thomas.borrasd@gmail.com" class="text-slate-400 hover:text-white transition">thomas.borrasd@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-primary">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium">Localisation</h3>
+                                <p class="text-slate-400">Garches (92380), France</p>
+                            </div>
+                        </div>
+                        <!-- Téléphone (optionnel selon ton souhait de l'afficher publiquement) -->
+                         <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-primary">
+                                <i class="fas fa-phone text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium">Téléphone</h3>
+                                <p class="text-slate-400">06 28 91 64 40</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 text-slate-800 dark:text-white">
+                    <form action="https://formspree.io/f/VOTRE_ID_ICI" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Nom complet</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="Votre nom">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="votre@email.com">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition" placeholder="Votre message..."></textarea>
+                        </div>
+                        <!-- IMPORTANT: Remplace l'action du formulaire avec ton lien Formspree -->
+                        <button type="button" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg shadow-blue-500/30">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2024 Thomas Borras-Dupuy. Tous droits réservés.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <!-- Lien GitHub -->
+                <a href="#" class="hover:text-white transition"><i class="fab fa-github text-xl"></i></a>
+                <!-- Lien LinkedIn -->
+                <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Dark Mode Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+        const htmlElement = document.documentElement;
+
+        // Fonction pour mettre à jour le thème
+        function updateTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+        }
+
+        // Fonction pour basculer le thème
+        function toggleTheme() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        }
+
+        // Initialisation
+        updateTheme();
+
+        // Event Listeners
+        if(themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if(themeToggleBtnMobile) themeToggleBtnMobile.addEventListener('click', toggleTheme);
+
+
+        // --- Menu Mobile Toggle ---
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        if(btn) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        }
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // --- Navbar Scroll Effect ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
